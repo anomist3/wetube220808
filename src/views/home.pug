@@ -1,7 +1,18 @@
-doctype html 
-html(lang="ko")
-  head 
-    title BookClub
-  body
-    h1 Welcome to World Classic Book Club
-  include partials/footer.pug
+extends base.pug
+include mixins/book
+
+block content 
+  main 
+    h2 Welcome to World Classic Book Club
+    nav 
+      ul 
+        li 
+          a(href="/books/add-book") Add New Book
+    ul
+      hr
+      each dbBook, index in dbBooks
+        +book(dbBook, index)
+      hr
+      each dbMember in dbMembers
+        li=dbMember.name
+        small=dbMember.since

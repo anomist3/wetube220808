@@ -1,0 +1,22 @@
+extends base.pug
+
+block content 
+  h4 수정하기
+  form(method="POST")
+    h4 제목 
+      input(name="title", placeholder="제목", value=dbBook.title, required)
+    h4 지은이
+      input(name="author", placeholder="지은이", value=dbBook.author, required)
+    h4 옮긴이
+      input(name="translator", placeholder="옮긴이", value=dbBook.translator)
+    h4 출판사
+      input(name="publisher", placeholder="출판사", value=dbBook.publisher)
+    h4 해시태그
+      input(name="hashtags", placeholder=`${dbBook.meta.hashtags}`, value=dbBook.meta.hashtags)
+    h4 토론 현황
+      input(name="isMeetingDone", placeholder=`${dbBook.meta.isMeetingDone}`, value=dbBook.meta.isMeetingDone)
+    h4 희망 인원
+      input(name="wishCount", placeholder=`${dbBook.meta.wantedCount}`, value=dbBook.meta.wishCount)
+    h4 사진
+      input(name="bookImg", placeholder=`${dbBook.bookImg}`, value=dbBook.bookImg)
+    input(value="Save", type="submit")

@@ -9,11 +9,11 @@ export const login = (req, res) => {
 
 // memberRouter 
 export const addMember = (req, res) => {
-  res.render("addmember");
+  res.render("addmember", { pageTitle: "Add Member" });
 }
 
 export const seeMember = (req, res) => {
-  res.render("seemember");
+  res.render("seemember", { pageTitle: "See Member" });
 }
 
 export const logout = (req, res) => {

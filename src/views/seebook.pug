@@ -1,7 +1,19 @@
-doctype html 
-html(lang="ko")
-  head 
-    title Book Info
-  body
-    h1 Book
-  include partials/footer.pug
+extends base.pug
+
+block content 
+  ul
+    a(href=`${dbBook._id}/edit`) Edit Book
+  img(src=`${dbBook.bookImg}` alt="Book cover" width="300" height="500")
+  h2 지은이: #{dbBook.author}
+  h3 옮긴이: #{dbBook.translator}
+  h3 출판사: #{dbBook.publisher}
+  h3 해시태그: #{dbBook.meta.hashtags}
+  hr
+  h3 완독 인원: #{dbBook.readCount}
+  h3 희망 인원: #{dbBook.wishCount}
+  h3 토론 현황:
+    if isMeetingDone
+      span  완료
+    else
+      span  대기
+  
