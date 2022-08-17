@@ -1,0 +1,17 @@
+extends base
+
+block content 
+  if (errorMessage)
+    h2 #{errorMessage}
+  form(method="POST", autocomplete="off")
+    input(name="nickname", placeholder="닉네임", type="text", required)
+    input(name="password", placeholder="암호", type="password", required)
+    input(name="password2", placeholder="암호 재입력", type="password", required)
+    hr
+    input(name="email", placeholder="(선택) 이메일 주소", type="email")
+    input(name="location", placeholder="(선택) 사는 곳", type="text")
+    input(type="submit", value="등록")
+  hr
+  div
+    span 이미 등록된 계정이 있으시다면 &nbsp;&nbsp;&nbsp;
+    a(href="/login") 로그인하기 &rarr;

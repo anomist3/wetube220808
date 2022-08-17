@@ -1,16 +1,31 @@
 doctype html 
 html(lang="ko")
   head 
-    title #{pageTitle} | World Classic Book Club
+    title #{pageTitle} | #{siteName}
     link(rel="stylesheet" href="https://unpkg.com/mvp.css")
   body
     header 
       nav 
         ul 
           li
-            a(href="/") Home
-          li 
-            a(href="/login") Log in
+            a(href="/") 처음 화면
+          li
+            a(href="/search") 도서 검색
+          if loggedIn
+            li 
+              a(href="/books/add-book") 새 책 등록하기
+            li 
+              a(href="/meetings/add") 토론 추가하기
+            li &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            li 
+              a(href=`/members/profile/${loggedInMember._id}`) #{loggedInMember.nickname}님의 프로필
+            li
+              a(href="/logout") 로그아웃
+          else
+            li 
+              a(href="/join") 회원 등록
+            li 
+              a(href="/login") 로그인
       h1=pageTitle
     main
       block content

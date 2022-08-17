@@ -1,0 +1,17 @@
+extends base.pug
+
+block content 
+  h3 닉네임: #{member.nickname}
+  h3 이메일: #{member.email}
+  h3 사는 곳: #{member.location}
+  h3 토론 참여 현황: #{participatedMeetings.length}
+  hr
+  each meeting, index in participatedMeetings
+    ul #{index + 1}. #{meeting.bookTitle}
+      li 사회자: #{meeting.leader}
+      li 지은이: #{meeting.bookAuthor}
+      li 참가자: #{meeting.participants}
+      li 날짜: #{meeting.date}
+      hr
+  if member.photoUrl
+    img(src="/" + `${member.photoUrl}`, alt="회원 사진이 없습니다.", height="250", width="200")

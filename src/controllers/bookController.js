@@ -1,34 +1,32 @@
 import Book from '../models/Book.js';
 
 export const getAddBook = (req, res) => {
-
-  return res.render("addbook", { pageTitle: "Add New" });
+  return res.render("addbook", { pageTitle: "새 책 추가하기" });
 }
 
 export const postAddBook = async (req, res) => {
   try {
-    const { bookImg, title, author, translator, publisher, hashtags } = req.body;
-    console.log(req.body);
+    const { body: {
+      bookImg, title, author, translator, publisher, hashtags, readCount, wishCount, ISBN },
+      file: { path: videoUrl },
+    } = req;
 
     await Book.create({
+      videoUrl,
       bookImg,
       title,
       author,
       translator,
       publisher,
-      hashtags: hashtags.split(",").map(word => `#${word}`),
-      meta: {
-        readCount: 0,
-        wishCount: 0,
-        isMeetingDone: false,
-        comments: [],
-        createdAt: new Date.now,
-      }
+      hashtags: Book.formatHashtags(hashtags),
+      readCount,
+      wishCount,
+      ISBN: parseInt(ISBN),
     });
 
     return res.redirect("/");
   } catch (error) {
-    return res.render("addbook", {
+    return res.status(400).render("addbook", {
       pageTitle: "Add Book", errorMessage: error._message
     });
   }
@@ -36,15 +34,52 @@ export const postAddBook = async (req, res) => {
 }
 
 export const getSeeBook = async (req, res) => {
-  const { id } = req.params;
-  const dbBook = await Book.findOne({ _id: id });
+  try {
+    const { id } = req.params;
+    const dbBook = await Book.findById(id);
 
-  if (!dbBook) {
+    return res.render("seebook", { pageTitle: `${dbBook.title}`, dbBook });
+  } catch (error) {
 
-    return res.render("404", { pageTitle: "Book Not Found." });
+    return res.status(400).render("404", { pageTitle: "Book Not Found." });
+  }
+}
+
+export const searchBook = async (req, res) => {
+  const { keyword } = req.query;
+  let searchedBooks = [];
+
+  if (keyword) {
+    const searchedBooks = await Book.find({
+      $or: [
+        {
+          title:
+          {
+            $regex: new RegExp(keyword, "i"),
+          }
+        },
+        {
+          author:
+          {
+            $regex: new RegExp(keyword, "i"),
+          }
+        },
+        {
+          translator: keyword
+        },
+        {
+          publisher: keyword
+        },
+        {
+          hashtags: keyword
+        },
+      ]
+    });
+
+    return res.render("searchbook", { pageTitle: "책 찾아보기", searchedBooks, keyword });
   }
 
-  return res.render("seebook", { pageTitle: `${dbBook.title}`, dbBook });
+  res.render("searchbook", { pageTitle: "책 찾아보기", searchedBooks });
 }
 
 export const getEditBook = async (req, res) => {
@@ -53,19 +88,21 @@ export const getEditBook = async (req, res) => {
 
   if (!dbBook) {
 
-    return res.render("404", { pageTitle: "Book Not Found." });
+    return res.status(400).render("404", { pageTitle: "Book Not Found." });
   }
 
   return res.render("editbook", { pageTitle: dbBook.title, dbBook });
 }
 
 export const postEditBook = async (req, res) => {
-  const { id } = req.params;
-  const { bookImg, title, author, translator, publisher, hashtags, isMeetingDone, wishCount } = req.body;
-  const dbBook = await Book.findById(id);
+  const {
+    params: { id },
+    body: { bookImg, title, author, translator, publisher, hashtags, isMeetingDone, wishCount, ISBN },
+  } = req;
+  const dbBook = await Book.exists({ _id: id });
 
   if (!dbBook) {
-    return res.render("404", { pageTitle: "Book Not Found." });
+    return res.status(404).render("404", { pageTitle: "Book Not Found." });
   }
 
   await Book.findByIdAndUpdate(id, {
@@ -73,15 +110,23 @@ export const postEditBook = async (req, res) => {
     author,
     translator,
     publisher,
-    hashtags: hashtags.split(",").map((word) => (word.startsWith("#") ? word : `#${word}`)),
-    isMeetingDone,
-    wishCount
-  })
+    hashtags: [...Book.formatHashtags(hashtags)],
+    isMeetingDone: isMeetingDone === "완료" ? true : false,
+    wishCount,
+    bookImg,
+    ISBN
+  });
 
   return res.redirect(`/books/${id}`);
 }
 
-export const deleteBook = (req, res) => {
-  return res.send("DELETE BOOK");
+export const deleteBook = async (req, res) => {
+  const { id } = req.params;
+
+  if (id.match(/^[0-9a-fA-F]{24}$/)) {
+    await Book.findByIdAndDelete(id);
+  }
+
+  return res.redirect("/");
 }
 

@@ -1,0 +1,12 @@
+extends base
+include mixins/list-books
+
+block content 
+  form(method="GET")
+    input(name="keyword", placeholder="제목 검색", type="text")
+    input(type="submit", value="검색")
+  if (searchedBooks.length)  
+    each book, index in searchedBooks 
+      +listBooks(book, index)
+  else 
+    small 책을 읽읍시다!

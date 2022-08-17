@@ -3,11 +3,19 @@ extends base.pug
 block content 
   if errorMessage
     span=errorMessage
-  form(method="POST")
+  form(method="POST", enctype="multipart/form-data")
     input(name="title", placeholder="*제목", type="text")
     input(name="author", placeholder="*지은이", type="text")
     input(name="translator", placeholder="옮긴이", type="text")
     input(name="publisher", placeholder="출판사", type="text")
     input(name="hashtags", placeholder="해시태그(쉼표로 구분)", type="text")
+    br
+    label(for="videoUrl") 소개 영상
+    input(name="videoUrl", id="videoUrl", type="file", accept="video/*")
+    hr
+    input(name="readCount", placeholder="완독 인원", type="text")
+    input(name="wishCount", placeholder="희망 인원", type="text")
     input(name="bookImg", placeholder="사진 링크", type="text")
-    input(type="submit", value="Add New")
+    input(name="ISBN", placeholder="ISBN", type="string")
+    br
+    input(type="submit", value="등록")

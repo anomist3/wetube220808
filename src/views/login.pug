@@ -1,0 +1,13 @@
+extends base
+block content
+  if (errorMessage)
+    h2 #{errorMessage}
+  form(method="POST")
+    input(name="nickname", placeholder="이름 혹은 별명", type="text", required)
+    input(name="password", placeholder="암호", type="password", required)
+    input(type="submit", value="로그인")
+    br
+    a(href="/login/github/start") Github으로 로그인하기 &rarr;
+  hr
+  span 회원 계정이 없으시다면 &nbsp;&nbsp;&nbsp;
+  a(href="/join") 회원 등록하기 &rarr;

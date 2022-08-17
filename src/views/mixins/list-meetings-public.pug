@@ -1,0 +1,27 @@
+mixin listMeetingsPublic(meeting, index)
+  span #{index + 1}. 선정 도서: #{meeting.bookTitle}
+  ul
+    li 사회자: #{meeting.leader}
+    li 지은이: #{meeting.bookAuthor}
+    li 옮긴이: #{meeting.bookTranslator}
+    li 출판사: #{meeting.bookPublisher}
+  h4 질문
+  ul
+    li 
+      span 1: #{meeting.questions[0]}
+    li 
+      span 2: #{meeting.questions[1]}
+    li 
+      span 3: #{meeting.questions[2]}
+    li
+      span 4: #{meeting.questions[3]}
+    li 
+      span 5: #{meeting.questions[4]}
+    li 
+      span 6: #{meeting.questions[5]}
+  if meeting.participants.length === 0
+    h4 토론 참가자가 없습니다.
+  else
+    h4 토론 참가자
+    each participant, index in meeting.participants
+      p #{index}. #{participant}

@@ -1,0 +1,29 @@
+extends base
+include mixins/list-members-checkbox
+
+block content 
+  form(method="POST")
+    input(name="leader", placeholder="토론 사회자", type="text", required)
+    input(name="bookTitle", placeholder="책 제목", type="text", required)
+    input(name="bookAuthor", placeholder="지은이", type="text", required)
+    input(name="hashtags", placeholder="해시태그", type="text")
+    hr
+    h4 토론을 위한 질문을 작성해 주세요 (토론일 이틀 전까지)
+    input(name="question1", placeholder="질문 1")
+    input(name="question2", placeholder="질문 2")
+    input(name="question3", placeholder="질문 3")
+    input(name="question4", placeholder="질문 4")
+    input(name="question5", placeholder="질문 5")
+    input(name="question6", placeholder="질문 6")
+    hr
+    label(for="isMeetingDone") 토론 진행 여부
+    select(name="isMeetingDone", id="isMeetingDone", value="진행 여부")
+      option(value=false) 대기
+      option(value=true) 완료
+    label(for="date") 토론 날짜
+    input(name="date", id="date", type="date")
+    h4 참석자
+    each member, index in members
+      +listMembersCheckbox(member, index)
+    hr
+    input(type="submit", value="등록")

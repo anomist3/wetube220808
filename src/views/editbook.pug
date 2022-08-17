@@ -1,4 +1,4 @@
-extends base.pug
+extends base
 
 block content 
   h4 수정하기
@@ -11,12 +11,18 @@ block content
       input(name="translator", placeholder="옮긴이", value=dbBook.translator)
     h4 출판사
       input(name="publisher", placeholder="출판사", value=dbBook.publisher)
+    h4 ISBN
+      input(name="ISBN", placeholder="ISBN", value=dbBook.ISBN)
     h4 해시태그
-      input(name="hashtags", placeholder=`${dbBook.meta.hashtags}`, value=dbBook.meta.hashtags)
+      input(name="hashtags", placeholder=`${[...dbBook.hashtags]}`, value=`${[...dbBook.hashtags]}`)
+      hr
     h4 토론 현황
-      input(name="isMeetingDone", placeholder=`${dbBook.meta.isMeetingDone}`, value=dbBook.meta.isMeetingDone)
+      input(name="isMeetingDone", placeholder=`${dbBook.isMeetingDone === "true" ? 완료 : 대기}`, value=`${dbBook.isMeetingDone === "true" ? 완료 : 대기}`)
+    h4 완독 인원
+      input(name="readCount", placeholder=`${dbBook.readCount}`, value=dbBook.readCount)
     h4 희망 인원
-      input(name="wishCount", placeholder=`${dbBook.meta.wantedCount}`, value=dbBook.meta.wishCount)
-    h4 사진
+      input(name="wishCount", placeholder=`${dbBook.wishCount}`, value=dbBook.wishCount)
+    h4 사진 링크 주소
       input(name="bookImg", placeholder=`${dbBook.bookImg}`, value=dbBook.bookImg)
+      hr
     input(value="Save", type="submit")
