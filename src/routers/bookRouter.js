@@ -1,6 +1,6 @@
 import express from "express";
 import { getAddBook, postAddBook, getSeeBook, getEditBook, postEditBook, deleteBook } from "../controllers/bookController.js";
-import { protectorMiddleware, uploadPhoto, uploadVideo } from "../middlewares.js";
+import { protectorMiddleware, uploadVideo } from "../middlewares.js";
 
 const bookRouter = express.Router();
 

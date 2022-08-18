@@ -16,8 +16,8 @@ block content
     h4 해시태그
       input(name="hashtags", placeholder=`${[...dbBook.hashtags]}`, value=`${[...dbBook.hashtags]}`)
       hr
-    h4 토론 현황
-      input(name="isMeetingDone", placeholder=`${dbBook.isMeetingDone === "true" ? 완료 : 대기}`, value=`${dbBook.isMeetingDone === "true" ? 완료 : 대기}`)
+    h4 토론 여부
+      input(name="isMeetingDone", placeholder="완료 혹은 대기", value=`${dbBook.isMeetingDone === "true" ? 완료 : 대기}`)
     h4 완독 인원
       input(name="readCount", placeholder=`${dbBook.readCount}`, value=dbBook.readCount)
     h4 희망 인원

@@ -3,55 +3,30 @@ include mixins/list-books.pug
 include mixins/list-meeting.pug
 
 block content 
-  main 
-    h2 Welcome to World Classic Book Club
+  h2 Welcome to World Classic Book Club
     hr
     h2 독서 토론
     hr
-    each meeting, index in meetings
-      if String(loggedInMember._id) === String(meeting.owner)
-        a(href=`/meetings/${meeting._id}`) #{index + 1}. 토론 도서: #{meeting.bookTitle}
-      else 
-        h4 #{index + 1}. 토론 도서: #{meeting.bookTitle}
-      ul
-        li 
-          b 사회자: #{meeting.leader}
-        li 날짜: #{meeting.date}
-        li 지은이: #{meeting.bookAuthor}
-        li 옮긴이: #{meeting.bookTranslator}
-        li 출판사: #{meeting.bookPublisher}
-      h4 질문
-      ul
-        li 
-          span 1: #{meeting.questions[0]}
-        li 
-          span 2: #{meeting.questions[1]}
-        li 
-          span 3: #{meeting.questions[2]}
-        li
-          span 4: #{meeting.questions[3]}
-        li 
-          span 5: #{meeting.questions[4]}
-        li 
-          span 6: #{meeting.questions[5]}
-      if meeting.participants.length === 0
-        h4 토론 참가자가 없습니다.
-      else
-        h4 토론 참가자
-        each participant, index in meeting.participants
-          p #{index + 1}. #{participant}
-      hr
-    hr 
-    h2 등록 회원 
-    hr
+  div.meetings__grid  
+    if loggedIn
+      each meeting, index in meetings
+        +listMeeting("public", meeting, index)
+    else
+      each meeting, index in meetings 
+        +listMeeting("private", meeting, index)
+  hr 
+  h2 도서 목록
+  hr
+  div.books__grid
+    each book, index in books
+      +listBooks(book, index)
+  hr
+  h2 등록 회원 
+  hr
+  div.members_grid
     each member in members
       ul
         li 
           a(href="/" + `members/profile/other/${member._id}`) #{member.nickname}
         small=member.since
-    hr
-    h2 도서 목록
-    hr
-    each book, index in books
-      +listBooks(book, index)
     hr

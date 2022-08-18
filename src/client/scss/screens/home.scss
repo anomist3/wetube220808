@@ -1,0 +1,17 @@
+.meetings__grid {
+	display: grid;
+	gap: 50px;
+	grid-template-columns: repeat(4, 1fr);
+}
+
+.books__grid {
+	display: grid;
+	gap: 50px;
+	grid-template-columns: repeat(4, 1fr);
+}
+
+.members_grid {
+	display: grid;
+	gap: 10px;
+	grid-template-columns: repeat(8, 1fr);
+}

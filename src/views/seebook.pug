@@ -9,16 +9,16 @@ block content
   hr
   img(src=`${dbBook.bookImg}`, alt="수정하기에서 사진 링크를 입력해 주세요", width="200", height="300", border="1")
   br
-  h3 제목: #{dbBook.title}
-  h3 지은이: #{dbBook.author}
-  h3 옮긴이: #{dbBook.translator}
-  h3 출판사: #{dbBook.publisher}
-  h3 ISBN: #{dbBook.ISBN}
-  h3 해시태그: #{dbBook.hashtags}
+  h4 제목: #{dbBook.title}
+  h4 지은이: #{dbBook.author}
+  h4 옮긴이: #{dbBook.translator}
+  h4 출판사: #{dbBook.publisher}
+  h4 ISBN: #{dbBook.ISBN}
+  h4 해시태그: #{dbBook.hashtags}
   hr
-  h3 완독 인원: #{dbBook.readCount}
-  h3 희망 인원: #{dbBook.wishCount}
-  h3 토론 현황:
+  h4 완독 인원: #{dbBook.readCount}
+  h4 희망 인원: #{dbBook.wishCount}
+  h4 토론 현황:
     if dbBook.isMeetingDone
       span  완료
     else

@@ -6,7 +6,7 @@ const MeetingSchema = new mongoose.Schema({
   bookAuthor: { type: String, required: true },
   bookTranslator: String,
   bookPublisher: String,
-  book: { type: Object },
+  book: { type: mongoose.Schema.Types.ObjectId, ref: "Book" },
   leader: { type: String, required: true },
   participants: [Object],
   questions: [

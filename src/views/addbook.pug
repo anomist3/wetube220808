@@ -13,6 +13,10 @@ block content
     label(for="videoUrl") 소개 영상
     input(name="videoUrl", id="videoUrl", type="file", accept="video/*")
     hr
+    label(for="isMeetingDone") 토론 진행 여부
+    select(name="isMeetingDone", id="isMeetingDone", value="진행 여부")
+      option(value=false) 대기
+      option(value=true) 완료
     input(name="readCount", placeholder="완독 인원", type="text")
     input(name="wishCount", placeholder="희망 인원", type="text")
     input(name="bookImg", placeholder="사진 링크", type="text")

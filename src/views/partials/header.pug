@@ -1,0 +1,28 @@
+header 
+  a(href="/").header__logo
+    i.fa-solid.fa-house
+  h1=pageTitle
+  nav 
+    ul 
+      li
+        a(href="/") 처음 화면
+      li
+        a(href="/search") 도서 검색&nbsp;
+          i.fa-solid.fa-magnifying-glass 
+      if loggedIn
+        li 
+          a(href="/books/add-book") 새 책 추가하기&nbsp;
+            i.fa-solid.fa-book-circle-arrow-up
+        li 
+          a(href="/meetings/add") 토론 추가하기
+        li &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        li 
+          a(href=`/members/profile/${loggedInMember._id}`) #{loggedInMember.nickname}님의 프로필
+        li
+          a(href="/logout") 로그아웃
+      else
+        li 
+          a(href="/join") 회원 등록
+        li 
+          a(href="/login").header__btn 로그인
+hr

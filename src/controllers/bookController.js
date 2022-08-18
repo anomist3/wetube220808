@@ -7,9 +7,15 @@ export const getAddBook = (req, res) => {
 export const postAddBook = async (req, res) => {
   try {
     const { body: {
-      bookImg, title, author, translator, publisher, hashtags, readCount, wishCount, ISBN },
+      bookImg, title, author, translator, publisher, hashtags, readCount, wishCount, ISBN, isMeetingDone },
       file: { path: videoUrl },
     } = req;
+
+    if (isMeetingDone === "false") {
+      isMeetingDone = false;
+    } else {
+      isMeetingDone = true;
+    }
 
     await Book.create({
       videoUrl,
@@ -22,12 +28,13 @@ export const postAddBook = async (req, res) => {
       readCount,
       wishCount,
       ISBN: parseInt(ISBN),
+      isMeetingDone
     });
 
     return res.redirect("/");
   } catch (error) {
     return res.status(400).render("addbook", {
-      pageTitle: "Add Book", errorMessage: error._message
+      pageTitle: "새 책 추가하기", errorMessage: error._message
     });
   }
 
