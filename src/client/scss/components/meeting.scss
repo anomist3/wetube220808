@@ -1,1 +1,33 @@
 // meeting mixin
+
+.meetings__login-required {
+	font-size: 1.5rem;
+	width: 1000px;
+	padding: 50px;
+
+	a span {
+		color: yellow;
+
+		&:hover {
+			border: 1px solid red;
+			border-radius: 10px;
+			padding: 5px;
+		}
+	}
+}
+
+.meetings__grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	width: 90vw;
+	gap: 20px;
+
+	.meeting-mixin {
+		padding: 1rem 1rem;
+		border: 2px solid $white;
+		border-radius: 20px;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+}

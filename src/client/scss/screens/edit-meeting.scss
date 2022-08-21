@@ -1,0 +1,54 @@
+.edit-meeting {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border: 1px solid $white;
+	border-radius: 10px;
+	padding: 10px;
+	width: 90vw;
+	height: 700px;
+
+	.edit-meeting__form {
+		width: 90%;
+		border: 1px solid $white;
+		border-radius: 10px;
+		padding: 20px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	.edit-meeting__form__basic-info {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+		gap: 10px;
+	}
+
+	.edit-meeting__form__meta-info {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		select {
+			margin-top: 10px;
+			border-radius: 10px;
+			padding: 5px 10px;
+		}
+	}
+
+	.edit-meeting__form__submit-btn {
+		margin-top: 20px;
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+
+		input {
+			border-radius: 10px;
+			color: orange;
+			background-color: $bg;
+			padding: 10px 30px;
+		}
+	}
+}

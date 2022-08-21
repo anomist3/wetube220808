@@ -7,6 +7,7 @@ const bookSchema = new mongoose.Schema({
   author: { type: String, required: true, trim: true },
   translator: { type: String, trim: true },
   publisher: { type: String, trim: true },
+  description: String,
   hashtags: [{ type: String, trim: true }],
   readCount: { type: Number, default: 0 },
   wishCount: { type: Number, default: 0 },

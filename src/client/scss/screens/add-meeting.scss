@@ -1,0 +1,63 @@
+.add-meeting-form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 5px;
+
+	.add-meeting-form__book-info {
+		width: 50rem;
+		border: 1px solid yellow;
+		border-radius: 10px;
+		padding: 10px 10px;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 5px;
+	}
+
+	.add-meeting-form__meeting-info {
+		margin-top: 10px;
+		width: 50rem;
+		border: 1px solid yellow;
+		border-radius: 10px;
+		padding: 15px 3rem;
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		gap: 10px;
+
+		#isMeetingDone {
+			height: 30px;
+		}
+	}
+
+	.add-meeting-form__meeting-info__questions-box {
+		display: flex;
+		padding: 30px 30px;
+		flex-direction: column;
+		align-items: flex-end;
+		border-radius: 10px;
+
+		.add-meeting-form__meeting-info__question-title {
+			width: 100%;
+		}
+
+		.add-meeting-form__meeting-info__question {
+			width: 100%;
+			margin-top: 10px;
+		}
+
+		input {
+			width: 100%;
+		}
+	}
+
+	.add-meeting-form__submit-btn {
+		margin-top: 10px;
+		width: 50%;
+
+		input {
+			width: 100%;
+		}
+	}
+}

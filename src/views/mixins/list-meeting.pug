@@ -1,9 +1,11 @@
 mixin listMeeting(mode, meeting, index)
   div.meeting-mixin
     if mode === "public"
-      a(href=`/meetings/${meeting._id}`) #{index + 1}. 토론 도서: #{meeting.bookTitle}
+      a.meeting-mixin__title(href=`/meetings/${meeting._id}`) #{index + 1}. 
+        span 토론 도서: #{meeting.bookTitle}
     else if mode === "private"
-      span #{index + 1}. 토론 도서: #{meeting.bookTitle}
+      span.meeting-mixin__title #{index + 1}. 토론 도서: #{meeting.bookTitle}
+    div.line
     ul
       li 
         b 사회자: #{meeting.leader}

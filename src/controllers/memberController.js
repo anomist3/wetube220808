@@ -5,7 +5,7 @@ import Meeting from '../models/Meeting.js';
 
 // globalRouter
 export const getJoin = (req, res) => {
-  res.render("join", { pageTitle: "세계고전문학 모임에 오신 것을 환영합니다!" });
+  res.render("join", { pageTitle: "회원 등록" });
 }
 
 export const postJoin = async (req, res) => {

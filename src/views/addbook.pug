@@ -2,24 +2,38 @@ extends base.pug
 
 block content 
   if errorMessage
-    span=errorMessage
-  form(method="POST", enctype="multipart/form-data")
-    input(name="title", placeholder="*제목", type="text")
-    input(name="author", placeholder="*지은이", type="text")
-    input(name="translator", placeholder="옮긴이", type="text")
-    input(name="publisher", placeholder="출판사", type="text")
-    input(name="hashtags", placeholder="해시태그(쉼표로 구분)", type="text")
-    br
-    label(for="videoUrl") 소개 영상
-    input(name="videoUrl", id="videoUrl", type="file", accept="video/*")
-    hr
-    label(for="isMeetingDone") 토론 진행 여부
-    select(name="isMeetingDone", id="isMeetingDone", value="진행 여부")
-      option(value=false) 대기
-      option(value=true) 완료
-    input(name="readCount", placeholder="완독 인원", type="text")
-    input(name="wishCount", placeholder="희망 인원", type="text")
-    input(name="bookImg", placeholder="사진 링크", type="text")
-    input(name="ISBN", placeholder="ISBN", type="string")
-    br
-    input(type="submit", value="등록")
+    h2.error-message=errorMessage
+  form.addbook-form(method="POST", enctype="multipart/form-data")
+    div.addbook-form__info
+      div.addbook-form__basic-info
+        h3.addbook-form__title 선정 도서
+        span 제목
+        input(name="title", placeholder="*제목", type="text")
+        span 지은이
+        input(name="author", placeholder="*지은이", type="text")
+        span 옮긴이
+        input(name="translator", placeholder="옮긴이", type="text")
+        span 출판사
+        input(name="publisher", placeholder="출판사", type="text")
+        span 해시태그
+        input(name="hashtags", placeholder="쉼표로 구분", type="text")
+      div.addbook-form__meta-info
+        h3.addbook-form__title 독서 토론
+        label.addbook-form__meta-info__is-meeting-done(for="isMeetingDone") 토론 진행 여부  
+          select(name="isMeetingDone", id="isMeetingDone", value="진행 여부")
+            option(value=false) 대기
+            option(value=true) 완료
+        span 완독 인원
+        input(name="readCount", placeholder="완독 인원", type="text")
+        span 희망 인원
+        input(name="wishCount", placeholder="희망 인원", type="text")
+        span ISBN
+        input(name="ISBN", placeholder="ISBN", type="string")
+        div.addbook-form__meta-info__photo-link-box
+          span 사진 링크
+          input(name="bookImg", placeholder="사진 링크", type="text")
+        div.addbook-form__meta-info__video-upload-box
+          label(for="videoUrl") 소개 영상
+          input(name="videoUrl", id="videoUrl", type="file", accept="video/*")
+    div.addbook-form__submit-btn
+      input(type="submit", value="등록")

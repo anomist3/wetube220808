@@ -1,17 +1,55 @@
+.welcome {
+	padding: 10px 25px;
+}
+
+.grid-title {
+	font-size: 35px;
+	padding: 10px 25px;
+}
+
 .meetings__grid {
-	display: grid;
-	gap: 50px;
-	grid-template-columns: repeat(4, 1fr);
+	margin-top: 10px;
+
+	.meeting-mixin__title {
+		color: yellow;
+
+		&:hover span {
+			color: gold;
+		}
+	}
 }
 
-.books__grid {
-	display: grid;
-	gap: 50px;
-	grid-template-columns: repeat(4, 1fr);
-}
+@media (max-width: 1200px) {
+	.meetings__grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
 
-.members_grid {
-	display: grid;
-	gap: 10px;
-	grid-template-columns: repeat(8, 1fr);
+	.books__grid {
+		grid-template-columns: repeat(1, 1fr);
+
+		.book-mixin {
+			display: flex;
+			justify-content: center;
+			width: 90vw;
+			gap: 35px;
+			padding: 1rem 1rem;
+			border: 2px solid $white;
+			border-radius: 20px;
+
+			.book-mixin__img-tag {
+				border-radius: 10px;
+				width: 12rem;
+				height: 17rem;
+			}
+
+			.book-mixin__info {
+				width: 80%;
+				padding: 20px;
+				font-size: 25px;
+			}
+		}
+	}
+	.members__grid {
+		grid-template-columns: repeat(4, 1fr);
+	}
 }

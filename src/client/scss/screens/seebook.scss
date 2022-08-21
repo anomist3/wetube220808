@@ -1,0 +1,45 @@
+.option-selects {
+	padding: 30px;
+
+	a {
+		border: 1px solid $white;
+		border-radius: 10px;
+		font-size: 20px;
+		padding: 10px;
+
+		&:hover {
+			color: yellow;
+		}
+	}
+}
+
+.line {
+	height: 1px;
+	background-color: $white;
+}
+
+.book__info {
+	margin: 30px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	gap: 30px;
+
+	.book__basic-info {
+		border: 1px solid $white;
+		border-radius: 10px;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		padding: 20px;
+	}
+
+	.book__meta-info {
+		border: 1px solid $white;
+		border-radius: 10px;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		padding: 20px;
+	}
+}

@@ -1,19 +1,21 @@
 extends base
 
 block content
-  if loggedInMember.photoUrl
-    img(src="/" + loggedInMember.photoUrl, height="100", width="100", alt="회원 사진")
-  form(method="POST", enctype="multipart/form-data")
-    span 닉네임
-      input(name="nickname", placeholder="닉네임", value=loggedInMember.nickname, type="text")
-    span 이메일 주소
-      input(name="email", placeholder="이메일 주소", value=loggedInMember.email, type="email")
-    span 사는 곳
-      input(name="location", placeholder="사는 곳", value=loggedInMember.location, type="text")
-    label(for="photo") 사진 올리기
-      input(name="photo", id="photo", type="file", accept="image/*")
-      br
+  div.my-profile
+    div.photo-edit-password-btn
+      if loggedInMember.photoUrl
+        img.photo-img(src="/" + loggedInMember.photoUrl, alt="회원 사진")
+      if !loggedInMember.socialOnly
+        br
+        a.my-profile__form__edit-password-btn(href=`/members/profile/${loggedInMember._id}/change-password`) 암호 변경하러 가기
+    form.my-profile__form(method="POST", enctype="multipart/form-data")
+      span 닉네임
+        input(name="nickname", placeholder="닉네임", value=loggedInMember.nickname, type="text")
+      span 이메일 주소
+        input(name="email", placeholder="이메일 주소", value=loggedInMember.email, type="email")
+      span 사는 곳
+        input(name="location", placeholder="사는 곳", value=loggedInMember.location, type="text")
+      div.my-profile__form__photo-input-box 
+        label(for="photo") 사진 올리기
+          input(name="photo", id="photo", type="file", accept="image/*")
       input(type="submit", value="프로필 수정")
-    if !loggedInMember.socialOnly
-      br
-      a(href=`/members/profile/${loggedInMember._id}/change-password`) 암호 변경

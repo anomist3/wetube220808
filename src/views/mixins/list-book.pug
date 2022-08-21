@@ -1,0 +1,26 @@
+mixin listBook(book, index)
+  div.book-mixin
+    div.book-mixin__img
+      img.book-mixin__img-tag(src=`${book.bookImg}`, alt="[책 이미지]")
+    div.book-mixin__info
+      a.book-mixin__info__title-link(href=`/books/${book.id}`)
+        span.book-mixin__title #{index + 1}. #{book.title}
+      div
+        each hashtag in book.hashtags
+          span #{hashtag} 
+      div.line
+      div
+        small 지은이: #{book.author}
+      div
+        small 옮긴이: #{book.translator}
+      div
+        small 출판사: #{book.publisher}
+      div
+        small 읽은 인원: #{book.readCount}
+      div
+        small 토론 여부: 
+          if (book.isMeetingDone === true)
+            small 완료
+          else
+            small 대기
+      small=book.createdAt

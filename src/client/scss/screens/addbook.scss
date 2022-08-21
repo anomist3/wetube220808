@@ -1,0 +1,123 @@
+input {
+	padding: 5px;
+}
+
+.error-message {
+	.error-message {
+		font-size: 30px;
+	}
+}
+
+.addbook-form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 90vw;
+	height: 42rem;
+	margin: 5px 0;
+	padding: 10px 50px;
+	border-radius: 10px;
+	gap: 25px;
+
+	.addbook-form__title {
+		margin-bottom: 5px;
+		width: 100%;
+		border: 1px solid $white;
+		border-radius: 10px;
+		padding: 5px 20px;
+		text-align: center;
+	}
+
+	.addbook-form__info {
+		width: 80vw;
+		margin-top: 10px;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		gap: 50px;
+	}
+
+	.addbook-form__basic-info {
+		border: 1px solid $white;
+		border-radius: 10px;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		padding: 30px;
+		width: 40%;
+		gap: 10px;
+
+		input {
+			width: 100%;
+		}
+	}
+
+	.addbook-form__meta-info {
+		border: 1px solid $white;
+		border-radius: 10px;
+		display: flex;
+		flex-direction: column;
+		width: 45%;
+		padding: 30px;
+		gap: 10px;
+
+		.addbook-form__meta-info__is-meeting-done {
+			select {
+				width: 100%;
+				padding: 5px;
+			}
+		}
+		.addbook-form__meta-info__photo-link-box {
+			border: 1px solid orange;
+			border-radius: 10px;
+			padding: 10px;
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+		}
+
+		.addbook-form__meta-info__video-upload-box {
+			border: 1px solid orange;
+			border-radius: 10px;
+			padding: 10px;
+
+			* {
+				padding: 10px;
+			}
+		}
+	}
+
+	.addbook-form__submit-btn {
+		display: flex;
+		justify-content: center;
+		width: 30%;
+
+		:only-child {
+			width: 100%;
+			padding: 10px 30px;
+			border-radius: 10px;
+			background-color: $bg;
+			color: $white;
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.addbook-form {
+		height: 1200px;
+		padding: 10px;
+
+		.addbook-form__info {
+			flex-direction: column;
+			gap: 10px;
+
+			.addbook-form__basic-info {
+				width: 100%;
+			}
+
+			.addbook-form__meta-info {
+				width: 100%;
+			}
+		}
+	}
+}

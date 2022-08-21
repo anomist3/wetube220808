@@ -1,12 +1,14 @@
 extends base
-include mixins/list-books
+include mixins/list-book
 
 block content 
-  form(method="GET")
-    input(name="keyword", placeholder="제목 검색", type="text")
-    input(type="submit", value="검색")
+  form.search-book__form(method="GET")
+    i.fa-solid.fa-magnifying-glass 
+      input.search-input(name="keyword", placeholder="제목 / 지은이", type="text")
+    input.submit-btn(type="submit", value="검색")
   if (searchedBooks.length)  
     each book, index in searchedBooks 
-      +listBooks(book, index)
+      +listBook(book, index)
   else 
-    small 책을 읽읍시다!
+    div.extra-comment
+      span 책을 읽읍시다!

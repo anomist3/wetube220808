@@ -1,3 +1,4 @@
 mixin listMembersCheckbox(member, index)
-  input(name=member.nickname, id=member.nickname,type="checkbox", `${meeting.participants.includes(member.nickname) ? checked}`)
-  label(for=member.nickname) #{member.nickname}
+  div
+    input(name=member.nickname, id=member.nickname,type="checkbox", `${meeting.participants.includes(member.nickname) ? checked}`)
+    label(for=member.nickname) #{member.nickname}

@@ -1,0 +1,45 @@
+.books__grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	width: 90vw;
+	gap: 2rem;
+
+	.book-mixin {
+		width: 42vw;
+		display: flex;
+		justify-content: center;
+		gap: 50px;
+		padding: 1rem 1rem;
+		border: 2px solid $white;
+		border-radius: 20px;
+
+		.book-mixin__img-tag {
+			border-radius: 10px;
+			width: 13rem;
+			height: 20rem;
+		}
+
+		.book-mixin__info {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+			border-radius: 10px;
+			border: 1px solid $white;
+			padding: 10px;
+			width: 50%;
+
+			.book-mixin__info__title-link {
+				color: yellow;
+
+				&:hover {
+					color: gold;
+				}
+			}
+
+			.line {
+				height: 1px;
+				background: $white;
+			}
+		}
+	}
+}

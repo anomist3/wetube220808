@@ -1,29 +1,32 @@
 extends base
 include mixins/list-members-checkbox
 
-block content 
-  h4 수정하기
-  form(method="POST")
-    h4 사회자
-      input(name="leader", placeholder="사회자", value=meeting.leader, required)
-    h4 책 제목 
-      input(name="bookTitle", placeholder="제목", value=meeting.bookTitle, required)
-    h4 지은이
-      input(name="bookAuthor", placeholder="지은이", value=meeting.bookAuthor, required)
-    h4 옮긴이
-      input(name="bookTranslator", placeholder="옮긴이", value=meeting.bookTranslator)
-    h4 출판사
-      input(name="bookPublisher", placeholder="출판사", value=meeting.bookPublisher)
-    h4 해시태그
-      input(name="hashtags", placeholder=`${[...meeting.hashtags]}`, value=`${[...meeting.hashtags]}`)
-      hr
-    label(for="isMeetingDone") 토론 진행 여부
-    select(name="isMeetingDone", id="isMeetingDone", value="진행 여부")
-      option(value="false") 대기
-      option(value="true") 완료
-    br
-    h4 참석자
-    each member, index in members
-      +listMembersCheckbox(member, index)
-    hr
-    input(value="Save", type="submit")
+block content
+  div.edit-meeting
+    h4.edit-meeting__title 수정하기
+    form.edit-meeting__form(method="POST")
+      div.edit-meeting__form__basic-info
+        h4 사회자
+          input(name="leader", placeholder="사회자", value=meeting.leader, required)
+        h4 책 제목 
+          input(name="bookTitle", placeholder="제목", value=meeting.bookTitle, required)
+        h4 지은이
+          input(name="bookAuthor", placeholder="지은이", value=meeting.bookAuthor, required)
+        h4 옮긴이
+          input(name="bookTranslator", placeholder="옮긴이", value=meeting.bookTranslator)
+        h4 출판사
+          input(name="bookPublisher", placeholder="출판사", value=meeting.bookPublisher)
+        h4 해시태그
+          input(name="hashtags", placeholder=`${[...meeting.hashtags]}`, value=`${[...meeting.hashtags]}`)
+          hr
+      div.edit-meeting__form__meta-info
+        label(for="isMeetingDone") 토론 진행 여부
+        select(name="isMeetingDone", id="isMeetingDone", value="진행 여부")
+          option(value="false") 대기
+          option(value="true") 완료
+        br
+        h4 참석자
+        each member, index in members
+          +listMembersCheckbox(member, index)
+      div.edit-meeting__form__submit-btn
+        input(value="Save", type="submit")

@@ -1,32 +1,61 @@
 extends base.pug
-include mixins/list-books.pug
+include mixins/list-book.pug
 include mixins/list-meeting.pug
 
 block content 
-  h2 Welcome to World Classic Book Club
+  h2.welcome Welcome to World Classic Book Club!
     hr
-    h2 독서 토론
-    hr
+    h2.grid-title 독서 토론
   div.meetings__grid  
     if loggedIn
       each meeting, index in meetings
         +listMeeting("public", meeting, index)
+        +listMeeting("public", meeting, index)
+        +listMeeting("public", meeting, index)
+        +listMeeting("public", meeting, index)
+        +listMeeting("public", meeting, index)
+        +listMeeting("public", meeting, index)
     else
-      each meeting, index in meetings 
-        +listMeeting("private", meeting, index)
+      span.meetings__login-required 토론 일정을 확인하기 위해 
+        a(href="/login") 
+           span 로그인
+        span 을 해 주세요.
   hr 
-  h2 도서 목록
+  h2.grid-title 도서 목록
   hr
   div.books__grid
     each book, index in books
-      +listBooks(book, index)
+      +listBook(book, index)
+      +listBook(book, index)
+      +listBook(book, index)
+      +listBook(book, index)
+      +listBook(book, index)
   hr
-  h2 등록 회원 
+  h2.grid-title 등록 회원 
   hr
-  div.members_grid
+  div.members__grid
     each member in members
-      ul
-        li 
-          a(href="/" + `members/profile/other/${member._id}`) #{member.nickname}
-        small=member.since
-    hr
+      ul.members__grid__member
+        a.member-nickname(href="/" + `members/profile/other/${member._id}`) #{member.nickname}
+        div
+          small Since #{member.since}
+      ul.members__grid__member
+        a.member-nickname(href="/" + `members/profile/other/${member._id}`) #{member.nickname}
+        div
+          small=member.since
+      ul.members__grid__member
+        a.member-nickname(href="/" + `members/profile/other/${member._id}`) #{member.nickname}
+        div
+          small=member.since
+      ul.members__grid__member
+        a.member-nickname(href="/" + `members/profile/other/${member._id}`) #{member.nickname}
+        div
+          small=member.since        
+      ul.members__grid__member
+        a.member-nickname(href="/" + `members/profile/other/${member._id}`) #{member.nickname}
+        div
+          small=member.since
+      ul.members__grid__member
+        a.member-nickname(href="/" + `members/profile/other/${member._id}`) #{member.nickname}
+        div
+          small=member.since        

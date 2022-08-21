@@ -11,11 +11,11 @@ export const postAddBook = async (req, res) => {
       file: { path: videoUrl },
     } = req;
 
-    if (isMeetingDone === "false") {
-      isMeetingDone = false;
-    } else {
-      isMeetingDone = true;
-    }
+    // if (isMeetingDone === "false") {
+    //   isMeetingDone = false;
+    // } else {
+    //   isMeetingDone = true;
+    // }
 
     await Book.create({
       videoUrl,
@@ -28,16 +28,16 @@ export const postAddBook = async (req, res) => {
       readCount,
       wishCount,
       ISBN: parseInt(ISBN),
-      isMeetingDone
+      // isMeetingDone
     });
 
     return res.redirect("/");
   } catch (error) {
+
     return res.status(400).render("addbook", {
       pageTitle: "새 책 추가하기", errorMessage: error._message
     });
   }
-
 }
 
 export const getSeeBook = async (req, res) => {

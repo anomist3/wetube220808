@@ -1,31 +1,32 @@
 extends base.pug
 
 block content 
-  ul
+  ul.option-selects
     a(href=`${dbBook._id}/edit`) 수정하기
     span &nbsp;&nbsp;&nbsp;
     a(href=`${dbBook._id}/delete`) 삭제
     
-  hr
-  img(src=`${dbBook.bookImg}`, alt="수정하기에서 사진 링크를 입력해 주세요", width="200", height="300", border="1")
-  br
-  h4 제목: #{dbBook.title}
-  h4 지은이: #{dbBook.author}
-  h4 옮긴이: #{dbBook.translator}
-  h4 출판사: #{dbBook.publisher}
-  h4 ISBN: #{dbBook.ISBN}
-  h4 해시태그: #{dbBook.hashtags}
-  hr
-  h4 완독 인원: #{dbBook.readCount}
-  h4 희망 인원: #{dbBook.wishCount}
-  h4 토론 현황:
-    if dbBook.isMeetingDone
-      span  완료
-    else
-      span  대기
-  hr
-  if dbBook.videoUrl
-    h3 소개 영상
-    video(src="/" + dbBook.videoUrl, alt="소개 영상을 올려 주세요" width="500", height="350", controls)
-  else
-    h4 소개 영상이 없습니다.
+  div.line
+  div.book__info  
+    img(src=`${dbBook.bookImg}`, alt="수정하기에서 사진 링크를 입력해 주세요", width="200", height="300", border="1")
+    div.book__basic-info
+      h4 제목: #{dbBook.title}
+      h4 지은이: #{dbBook.author}
+      h4 옮긴이: #{dbBook.translator}
+      h4 출판사: #{dbBook.publisher}
+      h4 ISBN: #{dbBook.ISBN}
+      h4 해시태그: #{dbBook.hashtags}
+    div.book__meta-info
+      h4 완독 인원: #{dbBook.readCount}
+      h4 희망 인원: #{dbBook.wishCount}
+      h4 토론 현황:
+        if dbBook.isMeetingDone
+          span  완료
+        else
+          span  대기
+      hr
+      if dbBook.videoUrl
+        h3 소개 영상
+        video(src="/" + dbBook.videoUrl, alt="소개 영상을 올려 주세요" width="500", height="350", controls)
+      else
+        h4 소개 영상이 없습니다.

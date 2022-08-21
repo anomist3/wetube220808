@@ -1,0 +1,65 @@
+.my-profile {
+	width: 90vw;
+	height: 550px;
+	border: 1px solid $white;
+	padding: 10px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 100px;
+
+	.photo-img {
+		border: 1px solid $white;
+		border-radius: 500px;
+		width: 200px;
+		height: 200px;
+	}
+
+	.my-profile__form {
+		padding: 20px;
+		width: 50%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 10px;
+		border: 1px solid $white;
+		border-radius: 10px;
+
+		.my-profile__form__photo-input-box {
+			margin: 10px auto;
+			width: 100%;
+			padding: 10px;
+			border: 1px solid $white;
+			border-radius: 5px;
+		}
+
+		input {
+			height: 35px;
+			color: gold;
+		}
+	}
+
+	span {
+		width: 100%;
+	}
+
+	input {
+		background-color: black;
+		margin-top: 5px;
+		width: 100%;
+	}
+
+	.my-profile__form__edit-password-btn {
+		padding: 20px;
+		margin-top: 30px;
+		height: 35px;
+		width: 100%;
+		color: gold;
+		border-radius: 10px;
+		background-color: $black;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}

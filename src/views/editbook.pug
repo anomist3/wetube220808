@@ -1,28 +1,30 @@
 extends base
 
 block content 
-  h4 수정하기
-  form(method="POST")
-    h4 제목 
-      input(name="title", placeholder="제목", value=dbBook.title, required)
-    h4 지은이
-      input(name="author", placeholder="지은이", value=dbBook.author, required)
-    h4 옮긴이
-      input(name="translator", placeholder="옮긴이", value=dbBook.translator)
-    h4 출판사
-      input(name="publisher", placeholder="출판사", value=dbBook.publisher)
-    h4 ISBN
-      input(name="ISBN", placeholder="ISBN", value=dbBook.ISBN)
-    h4 해시태그
-      input(name="hashtags", placeholder=`${[...dbBook.hashtags]}`, value=`${[...dbBook.hashtags]}`)
-      hr
-    h4 토론 여부
-      input(name="isMeetingDone", placeholder="완료 혹은 대기", value=`${dbBook.isMeetingDone === "true" ? 완료 : 대기}`)
-    h4 완독 인원
-      input(name="readCount", placeholder=`${dbBook.readCount}`, value=dbBook.readCount)
-    h4 희망 인원
-      input(name="wishCount", placeholder=`${dbBook.wishCount}`, value=dbBook.wishCount)
-    h4 사진 링크 주소
-      input(name="bookImg", placeholder=`${dbBook.bookImg}`, value=dbBook.bookImg)
-      hr
-    input(value="Save", type="submit")
+  div.edit-book
+    h4.edit-book__title 수정하기
+    div.line
+    form.edit-book__form(method="POST")
+      h4 제목 
+        input(name="title", placeholder="제목", value=dbBook.title, required)
+      h4 지은이
+        input(name="author", placeholder="지은이", value=dbBook.author, required)
+      h4 옮긴이
+        input(name="translator", placeholder="옮긴이", value=dbBook.translator)
+      h4 출판사
+        input(name="publisher", placeholder="출판사", value=dbBook.publisher)
+      h4 ISBN
+        input(name="ISBN", placeholder="ISBN", value=dbBook.ISBN)
+      h4 해시태그
+        input(name="hashtags", placeholder=`${[...dbBook.hashtags]}`, value=`${[...dbBook.hashtags]}`)
+        hr
+      h4 토론 여부
+        input(name="isMeetingDone", placeholder="완료 혹은 대기", value=`${dbBook.isMeetingDone === "true" ? 완료 : 대기}`)
+      h4 완독 인원
+        input(name="readCount", placeholder=`${dbBook.readCount}`, value=dbBook.readCount)
+      h4 희망 인원
+        input(name="wishCount", placeholder=`${dbBook.wishCount}`, value=dbBook.wishCount)
+      h4 사진 링크 주소
+        input(name="bookImg", placeholder=`${dbBook.bookImg}`, value=dbBook.bookImg)
+        hr
+      input(value="Save", type="submit")
