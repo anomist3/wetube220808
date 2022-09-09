@@ -10,7 +10,6 @@ export const postAddBook = async (req, res) => {
   try {
     const { body: {
       bookImg, title, author, translator, publisher, hashtags, readCount, wishCount, ISBN, isMeetingDone },
-      file: { location: videoUrl },
     } = req;
 
     // if (isMeetingDone === "false") {
@@ -20,7 +19,6 @@ export const postAddBook = async (req, res) => {
     // }
 
     await Book.create({
-      videoUrl,
       bookImg,
       title,
       author,

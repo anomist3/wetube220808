@@ -42,26 +42,6 @@ block content
           else
             span  대기
         hr
-        if dbBook.videoUrl
-          h3 소개 영상
-          div#videoContainer.video-container
-            video(src="/" + dbBook.videoUrl, alt="소개 영상을 올려 주세요" width="500", height="350")
-            div#videoControls.video-controls
-              div.video-controls__Btns
-                button#playBtn.video-controls__playBtn 재생
-                button#muteBtn.video-controls__muteBtn 음소거
-              div.video-controls__progress-bar
-                span#currentTime 0:00
-                span  / 
-                span#totalTime 0:00
-              input(type="range", value="0.5", step="0.1", min="0", max="1")#volumeRange
-              div.video-controls__timeline
-                input(type="range", step="1", value="0", min="0")#timeline
-              div
-                button#fullScreenBtn 전체 화면
-        else
-          h4 소개 영상이 없습니다.
 block scripts 
-  script(src="/static/js/videoPlayer.js")
   if loggedIn
     script(src="/static/js/commentSection.js")

@@ -72,43 +72,6 @@ button {
 	}
 }
 
-.video-container {
-	position: relative;
-}
-
-.video-controls {
-	opacity: 0;
-	transition: opacity 0.2s ease-in-out;
-	height: 15px;
-	position: absolute;
-	z-index: 1;
-	bottom: 50px;
-	left: 0px;
-	display: grid;
-	grid-template-rows: 6fr 1fr auto;
-	grid-template-columns: 1fr 4fr 1fr auto;
-	justify-content: space-between;
-	align-items: center;
-}
-
-video::-webkit-media-controls {
-	display: none !important;
-}
-
-.video-controls__progress-bar {
-	display: flex;
-	justify-content: center;
-}
-
-.showing {
-	opacity: 1;
-}
-
-.video-controls__Btns {
-	display: flex;
-	justify-content: center;
-}
-
 @media (max-width: 1200px) {
 	.book__info {
 		display: flex;

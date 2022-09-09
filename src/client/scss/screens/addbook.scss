@@ -76,28 +76,18 @@ input {
 			gap: 10px;
 		}
 
-		.addbook-form__meta-info__video-upload-box {
-			border: 1px solid orange;
-			border-radius: 10px;
-			padding: 10px;
+		.addbook-form__submit-btn {
+			display: flex;
+			justify-content: center;
+			width: 30%;
 
-			* {
-				padding: 10px;
+			:only-child {
+				width: 100%;
+				padding: 10px 30px;
+				border-radius: 10px;
+				background-color: $bg;
+				color: $white;
 			}
-		}
-	}
-
-	.addbook-form__submit-btn {
-		display: flex;
-		justify-content: center;
-		width: 30%;
-
-		:only-child {
-			width: 100%;
-			padding: 10px 30px;
-			border-radius: 10px;
-			background-color: $bg;
-			color: $white;
 		}
 	}
 }
