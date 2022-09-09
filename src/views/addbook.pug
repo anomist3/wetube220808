@@ -3,7 +3,7 @@ extends base.pug
 block content 
   if errorMessage
     h2.error-message=errorMessage
-  form.addbook-form(method="POST")
+  form.addbook-form(method="POST", enctype="multipart/form-data")
     div.addbook-form__info
       div.addbook-form__basic-info
         h3.addbook-form__title 선정 도서
