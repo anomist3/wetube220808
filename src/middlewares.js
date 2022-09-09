@@ -1,5 +1,5 @@
 import multer from "multer";
-import multerS3 from "multerS3";
+import multerS3 from "multer-s3";
 import aws from "aws-sdk";
 
 const s3 = new aws.S3({
@@ -9,11 +9,19 @@ const s3 = new aws.S3({
   }
 });
 
-const multerUploader = multerS3({
+const isHeroku = process.env.NODE_ENV === "production";
+
+const s3ImageUploader = multerS3({
   s3: s3,
-  bucket: "world-classic-book-club",
+  bucket: "world-classic-book-club/images",
   acl: "public-read",
-})
+});
+
+const s3VideoUploader = multerS3({
+  s3: s3,
+  bucket: "world-classic-book-club/videos",
+  acl: "public-read",
+});
 
 export const localsMiddleware = (req, res, next) => {
   res.locals.siteName = "World Classic Book Club";
@@ -46,11 +54,12 @@ export const uploadPhoto = multer({
   limits: {
     fileSize: 3000000,
   },
-  storage: multerUploader,
+  storage: isHeroku ? s3ImageUploader : undefined,
 });
 
 export const uploadVideo = multer({
   dest: "uploads/videos/",
   fileSize: 1000000000,
-  storage: multerUploader,
+  storage: isHeroku ? s3VideoUploader : undefined,
 });
+
