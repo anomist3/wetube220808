@@ -211,7 +211,7 @@ export const postMyProfile = async (req, res) => {
       nickname,
       email,
       location,
-      photoUrl: file ? file.path : photoUrl,
+      photoUrl: file ? file.location : photoUrl,
     }, { new: true })
   );
 

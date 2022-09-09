@@ -10,7 +10,7 @@ export const postAddBook = async (req, res) => {
   try {
     const { body: {
       bookImg, title, author, translator, publisher, hashtags, readCount, wishCount, ISBN, isMeetingDone },
-      file: { path: videoUrl },
+      file: { location: videoUrl },
     } = req;
 
     // if (isMeetingDone === "false") {
