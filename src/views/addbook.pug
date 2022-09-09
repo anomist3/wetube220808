@@ -3,7 +3,7 @@ extends base.pug
 block content 
   if errorMessage
     h2.error-message=errorMessage
-  form.addbook-form(method="POST", enctype="multipart/form-data")
+  form.addbook-form(method="POST")
     div.addbook-form__info
       div.addbook-form__basic-info
         h3.addbook-form__title 선정 도서
@@ -21,14 +21,14 @@ block content
         h3.addbook-form__title 독서 토론
         label.addbook-form__meta-info__is-meeting-done(for="isMeetingDone") 토론 진행 여부  
           select(name="isMeetingDone", id="isMeetingDone", value="진행 여부")
-            option(value=false) 대기
-            option(value=true) 완료
+            option(value="false") 대기
+            option(value="true") 완료
         span 완독 인원
         input(name="readCount", placeholder="완독 인원", type="text")
         span 희망 인원
         input(name="wishCount", placeholder="희망 인원", type="text")
         span ISBN
-        input(name="ISBN", placeholder="ISBN", type="string")
+        input(name="ISBN", placeholder="ISBN", type="number")
         div.addbook-form__meta-info__photo-link-box
           span 사진 링크
           input(name="bookImg", placeholder="사진 링크", type="text")

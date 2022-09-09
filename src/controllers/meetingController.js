@@ -26,7 +26,7 @@ export const getAddMeeting = async (req, res) => {
 
 export const postAddMeeting = async (req, res) => {
   const members = await Member.find({});
-  const books = await Book.find({});
+  // const books = await Book.find({});
 
   let nicknamesDB = [];
 
@@ -37,7 +37,8 @@ export const postAddMeeting = async (req, res) => {
     session: {
       member: { _id },
     },
-    body: { bookTitle,
+    body: {
+      bookTitle,
       bookAuthor,
       bookTranslator,
       bookPublisher,
@@ -56,11 +57,11 @@ export const postAddMeeting = async (req, res) => {
 
   if (isMeetingDone === "false") {
     isMeetingDone = false;
-  } else {
+  } else if (isMeetingDone === "true") {
     isMeetingDone = true;
   }
 
-  const relatedBook = await Book.findOne({ title: bookTitle });
+  // const relatedBook = await Book.findOne({ title: bookTitle });
 
   await Meeting.create({
     leader,
@@ -82,6 +83,21 @@ export const postAddMeeting = async (req, res) => {
     date,
     owner: _id,
   });
+
+  console.log(bookTitle,
+    bookAuthor,
+    bookTranslator,
+    bookPublisher,
+    leader,
+    question1,
+    question2,
+    question3,
+    question4,
+    question5,
+    question6,
+    hashtags,
+    isMeetingDone,
+    date);
 
   return res.redirect("/");
 }

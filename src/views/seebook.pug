@@ -37,9 +37,9 @@ block content
         h4 완독 인원: #{dbBook.readCount}
         h4 희망 인원: #{dbBook.wishCount}
         h4 토론 현황:
-          if dbBook.isMeetingDone
+          if dbBook.isMeetingDone === true
             span  완료
-          else
+          else if dbBook.isMeetingDone === false
             span  대기
         hr
 block scripts 

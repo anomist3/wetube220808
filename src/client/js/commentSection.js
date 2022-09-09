@@ -41,11 +41,8 @@ const handleSubmit = async (e) => {
     const { newCommentId } = await response.json();
     addComment(text, newCommentId);
   }
-
 }
 
 if (form) {
   form.addEventListener("submit", handleSubmit);
 }
-
-window.addEventListener("resize", handleResize);

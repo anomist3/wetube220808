@@ -14,6 +14,12 @@ block content
         span 지은이 
         input(name="bookAuthor", placeholder="지은이", type="text", required)
       div
+        span 옮긴이
+        input(name="bookTranslator", placeholder="옮긴이", type="text", required)
+      div
+        span 출판사
+        input(name="bookPublisher", placeholder="출판사", type="text", required)
+      div
         span 해시태그 
         input(name="hashtags", placeholder="해시태그", type="text")
     div.add-meeting-form__meeting-info
@@ -33,8 +39,8 @@ block content
         input(name="question6", placeholder="")
       label(for="isMeetingDone") 토론 진행 여부
       select(name="isMeetingDone", id="isMeetingDone", value="진행 여부")
-        option(value=false) 대기
-        option(value=true) 완료
+        option(value="false") 대기
+        option(value="true") 완료
       label(for="date") 토론 날짜
       input(name="date", id="date", type="date")
       h5 참석자

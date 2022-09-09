@@ -8,15 +8,17 @@ export const getAddBook = (req, res) => {
 
 export const postAddBook = async (req, res) => {
   try {
-    const { body: {
-      bookImg, title, author, translator, publisher, hashtags, readCount, wishCount, ISBN, isMeetingDone },
+    let {
+      body: {
+        bookImg, title, author, translator, publisher, hashtags, readCount, wishCount, ISBN, isMeetingDone
+      },
     } = req;
 
-    // if (isMeetingDone === "false") {
-    //   isMeetingDone = false;
-    // } else {
-    //   isMeetingDone = true;
-    // }
+    if (isMeetingDone === "false") {
+      isMeetingDone = false;
+    } else {
+      isMeetingDone = true;
+    }
 
     await Book.create({
       bookImg,
@@ -28,7 +30,8 @@ export const postAddBook = async (req, res) => {
       readCount,
       wishCount,
       ISBN: parseInt(ISBN),
-      // isMeetingDone
+      // ISBN,
+      isMeetingDone
     });
 
     return res.redirect("/");

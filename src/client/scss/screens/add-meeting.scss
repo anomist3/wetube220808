@@ -13,6 +13,14 @@
 		flex-direction: row;
 		align-items: center;
 		gap: 5px;
+
+		input {
+			width: 7.5rem;
+		}
+
+		:first-child {
+			color: yellow;
+		}
 	}
 
 	.add-meeting-form__meeting-info {
@@ -33,7 +41,7 @@
 
 	.add-meeting-form__meeting-info__questions-box {
 		display: flex;
-		padding: 30px 30px;
+		padding: 0 30px;
 		flex-direction: column;
 		align-items: flex-end;
 		border-radius: 10px;
