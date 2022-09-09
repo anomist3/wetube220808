@@ -1,32 +1,67 @@
 extends base.pug
 
 block content 
-  ul.option-selects
-    a(href=`${dbBook._id}/edit`) 수정하기
-    span &nbsp;&nbsp;&nbsp;
-    a(href=`${dbBook._id}/delete`) 삭제
-    
-  div.line
-  div.book__info  
-    img(src=`${dbBook.bookImg}`, alt="수정하기에서 사진 링크를 입력해 주세요", width="200", height="300", border="1")
-    div.book__basic-info
-      h4 제목: #{dbBook.title}
-      h4 지은이: #{dbBook.author}
-      h4 옮긴이: #{dbBook.translator}
-      h4 출판사: #{dbBook.publisher}
-      h4 ISBN: #{dbBook.ISBN}
-      h4 해시태그: #{dbBook.hashtags}
-    div.book__meta-info
-      h4 완독 인원: #{dbBook.readCount}
-      h4 희망 인원: #{dbBook.wishCount}
-      h4 토론 현황:
-        if dbBook.isMeetingDone
-          span  완료
+  div#bookContainer(data-id=dbBook._id)
+    ul.option-selects
+      a(href=`${dbBook._id}/edit`) 수정하기
+      span &nbsp;&nbsp;&nbsp;
+      a(href=`${dbBook._id}/delete`) 삭제
+    div.line
+    div.book__info
+      div.book__first-column
+        div.book__first-column__img
+          img(src=`${dbBook.bookImg}`, alt="수정하기에서 사진 링크를 입력해 주세요", width="200", height="300", border="1")
+        div.book__first-column__comment-section
+          if loggedIn
+            div.book__add-comments
+              form.book__add-comment-form#commentForm
+                textarea(cols="30", rows="3", placeholder="댓글을 남겨 주세요!")
+                button 댓글 달기
+          div.book__comments
+            ul
+              each comment in dbBook.comments.reverse()
+                li.book__comment
+                  i.fas.fa-comment
+                    span  #{comment.text}
+                    if String(loggedInMember) === String(comment.member)
+                      span X
+      div.book__basic-info
+        h4 제목: #{dbBook.title}
+        h4 지은이: #{dbBook.author}
+        h4 옮긴이: #{dbBook.translator}
+        h4 출판사: #{dbBook.publisher}
+        h4 ISBN: #{dbBook.ISBN}
+        h4 해시태그: #{dbBook.hashtags}
+        h4 조회수: #{dbBook.views}
+      div.book__meta-info
+        h4 완독 인원: #{dbBook.readCount}
+        h4 희망 인원: #{dbBook.wishCount}
+        h4 토론 현황:
+          if dbBook.isMeetingDone
+            span  완료
+          else
+            span  대기
+        hr
+        if dbBook.videoUrl
+          h3 소개 영상
+          div#videoContainer.video-container
+            video(src="/" + dbBook.videoUrl, alt="소개 영상을 올려 주세요" width="500", height="350")
+            div#videoControls.video-controls
+              div.video-controls__Btns
+                button#playBtn.video-controls__playBtn 재생
+                button#muteBtn.video-controls__muteBtn 음소거
+              div.video-controls__progress-bar
+                span#currentTime 0:00
+                span  / 
+                span#totalTime 0:00
+              input(type="range", value="0.5", step="0.1", min="0", max="1")#volumeRange
+              div.video-controls__timeline
+                input(type="range", step="1", value="0", min="0")#timeline
+              div
+                button#fullScreenBtn 전체 화면
         else
-          span  대기
-      hr
-      if dbBook.videoUrl
-        h3 소개 영상
-        video(src="/" + dbBook.videoUrl, alt="소개 영상을 올려 주세요" width="500", height="350", controls)
-      else
-        h4 소개 영상이 없습니다.
+          h4 소개 영상이 없습니다.
+block scripts 
+  script(src="/static/js/videoPlayer.js")
+  if loggedIn
+    script(src="/static/js/commentSection.js")

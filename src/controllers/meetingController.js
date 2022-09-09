@@ -1,6 +1,6 @@
-import Book from "../models/Book.js";
-import Member from "../models/Member.js";
-import Meeting from "../models/Meeting.js";
+import Book from "../models/Book";
+import Member from "../models/Member";
+import Meeting from "../models/Meeting";
 
 // globalRouter
 

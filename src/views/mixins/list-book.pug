@@ -4,7 +4,7 @@ mixin listBook(book, index)
       img.book-mixin__img-tag(src=`${book.bookImg}`, alt="[책 이미지]")
     div.book-mixin__info
       a.book-mixin__info__title-link(href=`/books/${book.id}`)
-        span.book-mixin__title #{index + 1}. #{book.title}
+        span.book-mixin__title(data-id=book.id) #{index + 1}. #{book.title}
       div
         each hashtag in book.hashtags
           span #{hashtag} 
@@ -23,4 +23,6 @@ mixin listBook(book, index)
             small 완료
           else
             small 대기
+      div
+        small 조회수: #{book.views}
       small=book.createdAt

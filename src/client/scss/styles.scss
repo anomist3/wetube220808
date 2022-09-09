@@ -69,6 +69,14 @@ input::placeholder {
 	opacity: 0.8;
 }
 
+button {
+	border: 1px solid $white;
+	border-radius: 10px;
+	color: $white;
+	background-color: $bg;
+	white-space: nowrap;
+}
+
 body {
 	// font-family: "Gowun Dodum", sans-serif;
 	font-family: "Poor Story", cursive;

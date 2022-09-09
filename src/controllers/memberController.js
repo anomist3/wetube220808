@@ -1,7 +1,7 @@
-import Member from "../models/Member.js";
+import Member from "../models/Member";
 import bcrypt from "bcrypt";
 import fetch from 'node-fetch';
-import Meeting from '../models/Meeting.js';
+import Meeting from '../models/Meeting';
 
 // globalRouter
 export const getJoin = (req, res) => {

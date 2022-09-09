@@ -1,4 +1,6 @@
-import Book from '../models/Book.js';
+import Book from '../models/Book';
+import Comment from "../models/Comment";
+import Member from "../models/Member";
 
 export const getAddBook = (req, res) => {
   return res.render("addbook", { pageTitle: "새 책 추가하기" });
@@ -43,7 +45,7 @@ export const postAddBook = async (req, res) => {
 export const getSeeBook = async (req, res) => {
   try {
     const { id } = req.params;
-    const dbBook = await Book.findById(id);
+    const dbBook = await Book.findById(id).populate("owner").populate("comments");
 
     return res.render("seebook", { pageTitle: `${dbBook.title}`, dbBook });
   } catch (error) {
@@ -137,3 +139,41 @@ export const deleteBook = async (req, res) => {
   return res.redirect("/");
 }
 
+export const registerViews = async (req, res) => {
+  const { id } = req.params;
+  const book = await Book.findById(id);
+
+  if (!book) {
+    return res.sendStatus(404);
+  }
+
+  book.views = book.views + 1;
+  await book.save();
+
+  return res.sendStatus(200);
+}
+
+export const addComment = async (req, res) => {
+  const {
+    params: { id },
+    body: { text },
+    session: { member },
+  } = req;
+
+  const book = await Book.findById(id).populate("owner").populate("comments");
+
+  if (!book) {
+    return res.sendStatus(404);
+  }
+
+  const comment = await Comment.create({
+    text,
+    owner: member._id,
+    book: id,
+  });
+
+  book.comments.push(comment._id);
+  book.save();
+
+  return res.status(201).json({ newCommentId: comment._id });
+}

@@ -1,8 +1,8 @@
 import express from "express";
-import { getJoin, postJoin, getLogin, postLogin, startGithubLogin, finishGithubLogin, logout } from "../controllers/memberController.js";
-import { showDashboard } from "../controllers/meetingController.js";
-import { searchBook } from "../controllers/bookController.js";
-import { protectorMiddleware, publicOnlyMiddleware } from "../middlewares.js";
+import { getJoin, postJoin, getLogin, postLogin, startGithubLogin, finishGithubLogin, logout } from "../controllers/memberController";
+import { showDashboard } from "../controllers/meetingController";
+import { searchBook } from "../controllers/bookController";
+import { protectorMiddleware, publicOnlyMiddleware } from "../middlewares";
 
 const globalRouter = express.Router();
 

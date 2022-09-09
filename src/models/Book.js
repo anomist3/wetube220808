@@ -13,10 +13,12 @@ const bookSchema = new mongoose.Schema({
   wishCount: { type: Number, default: 0 },
   isMeetingDone: { type: Boolean, default: false },
   comments: [
-    { type: String }
+    { type: mongoose.Schema.Types.ObjectId, ref: "Comment" }
   ],
   ISBN: Number,
+  views: { type: Number, default: 0 },
   createdAt: { type: Date, default: Date.now },
+  owner: { type: mongoose.Schema.Types.ObjectId, ref: "Member" },
 });
 
 bookSchema.static("formatHashtags", (hashtags) => {

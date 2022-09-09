@@ -10,25 +10,16 @@ block content
     if loggedIn
       each meeting, index in meetings
         +listMeeting("public", meeting, index)
-        +listMeeting("public", meeting, index)
-        +listMeeting("public", meeting, index)
-        +listMeeting("public", meeting, index)
-        +listMeeting("public", meeting, index)
-        +listMeeting("public", meeting, index)
     else
       span.meetings__login-required 토론 일정을 확인하기 위해 
         a(href="/login") 
-           span 로그인
+          span 로그인
         span 을 해 주세요.
   hr 
   h2.grid-title 도서 목록
   hr
   div.books__grid
     each book, index in books
-      +listBook(book, index)
-      +listBook(book, index)
-      +listBook(book, index)
-      +listBook(book, index)
       +listBook(book, index)
   hr
   h2.grid-title 등록 회원 
@@ -39,23 +30,5 @@ block content
         a.member-nickname(href="/" + `members/profile/other/${member._id}`) #{member.nickname}
         div
           small Since #{member.since}
-      ul.members__grid__member
-        a.member-nickname(href="/" + `members/profile/other/${member._id}`) #{member.nickname}
-        div
-          small=member.since
-      ul.members__grid__member
-        a.member-nickname(href="/" + `members/profile/other/${member._id}`) #{member.nickname}
-        div
-          small=member.since
-      ul.members__grid__member
-        a.member-nickname(href="/" + `members/profile/other/${member._id}`) #{member.nickname}
-        div
-          small=member.since        
-      ul.members__grid__member
-        a.member-nickname(href="/" + `members/profile/other/${member._id}`) #{member.nickname}
-        div
-          small=member.since
-      ul.members__grid__member
-        a.member-nickname(href="/" + `members/profile/other/${member._id}`) #{member.nickname}
-        div
-          small=member.since        
+block scripts
+  script(src="/static/js/bookPlayer.js")

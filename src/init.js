@@ -1,10 +1,12 @@
+import "regenerator-runtime";
 import "dotenv/config";
 // require("dotenv").config();
-import "./db.js";
-import Book from "./models/Book.js";
-import Member from "./models/Member.js";
-import Meeting from "./models/Meeting.js";
-import app from "./server.js";
+import "./db";
+import "./models/Book";
+import "./models/Member";
+import "./models/Meeting";
+import "./models/Comment";
+import app from "./server";
 
 const PORT = 4000;
 

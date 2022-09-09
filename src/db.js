@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-import Book from "./models/Book.js";
-import Member from "./models/Member.js";
+import Book from "./models/Book";
+import Member from "./models/Member";
 
 mongoose.connect(process.env.DB_URL);
 

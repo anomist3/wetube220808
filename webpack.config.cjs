@@ -1,17 +1,24 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 
+const BASE_JS = "./src/client/js/";
+
 module.exports = {
-  entry: "./src/client/js/main.js",
+  entry: {
+    main: BASE_JS + "main.js",
+    videoPlayer: BASE_JS + "videoPlayer.js",
+    bookPlayer: BASE_JS + "bookPlayer.js",
+    commentSection: BASE_JS + "commentSection.js"
+  },
   mode: "development",
-  watch: true,
+  // watch: true,
   plugins: [
     new MiniCssExtractPlugin({
       filename: "css/styles.css",
     })
   ],
   output: {
-    filename: "main.js",
+    filename: "js/[name].js",
     path: path.resolve(__dirname, "assets"),
     clean: true,
   },

@@ -6,6 +6,8 @@ const memberSchema = new mongoose.Schema({
   password: { type: String, required: false },
   email: String,
   location: String,
+  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
+  books: [{ type: mongoose.Schema.Types.ObjectId, ref: "Book" }],
   socialOnly: { type: Boolean, default: false },
   photoUrl: String,
   points: { type: Number, default: 0 },

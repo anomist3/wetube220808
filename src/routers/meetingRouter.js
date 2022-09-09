@@ -1,6 +1,6 @@
 import express from "express";
-import { getAddMeeting, postAddMeeting, getEditMeeting, postEditMeeting, deleteMeeting } from "../controllers/meetingController.js";
-import { protectorMiddleware } from "../middlewares.js";
+import { getAddMeeting, postAddMeeting, getEditMeeting, postEditMeeting, deleteMeeting } from "../controllers/meetingController";
+import { protectorMiddleware } from "../middlewares";
 
 const meetingRouter = express.Router();
 

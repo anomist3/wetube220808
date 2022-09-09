@@ -2,8 +2,8 @@ import express from "express";
 import {
   seeMember, addMember, editMember, deleteMember, getMyProfile, postMyProfile, getChangePassword,
   postChangePassword, getSeeOtherMemberProfile
-} from "../controllers/memberController.js";
-import { protectorMiddleware, uploadPhoto, } from "../middlewares.js";
+} from "../controllers/memberController";
+import { protectorMiddleware, uploadPhoto, } from "../middlewares";
 
 const memberRouter = express.Router();
 
